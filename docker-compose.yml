@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  opera:
+    container_name: opera
+    image: lscr.io/linuxserver/opera:latest
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kuching
+      - OPERA_CLI=https://www.linuxserver.io/ #optional
+    volumes:
+      - /data/opera/config:/config
+    ports:
+      - 3000:3000
+      - 3001:3001
+    shm_size: "1gb"
+    restart: unless-stopped
